@@ -237,5 +237,4 @@ void playTicTacToe()
     system("cls");
 
     cout << "Terima kasih telah bermain!" << endl;
-    
 }

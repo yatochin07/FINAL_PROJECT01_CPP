@@ -4,10 +4,12 @@
 #include <climits>
 #include <vector>
 #include <limits>
+#include "start.h"
 #include "Tic-Tac-Toe/game1.h"
 #include "Sudoku/game2.h"
 #include "Suit/game3.h"
-#include "start.h"
+#include "Cari-Kata/game4.h"
+#include "credit.h"
 
 #ifdef _WIN32
     #define CLEAR "CLS"
@@ -29,6 +31,12 @@ void playSuit();
 // Game Sudoku
 void playSudoku();
 
+// Game Cari Kata
+void playCariKata();
+
+// credit
+void credit()
+;
 int main() {
     int pilihan;
     
@@ -42,9 +50,10 @@ int main() {
         cout << "| 1. Tic-Tac-Toe                     |\n";
         cout << "| 2. Sudoku                          |\n";
         cout << "| 3. Batu-Gunting-Kertas             |\n";
-        cout << "| 4. Keluar                          |\n";
+        cout << "| 4. Cari Kata                       |\n";
+        cout << "| 5. Keluar                          |\n";
         cout << "+=====================================+\n";
-        cout << "\nMasukkan pilihan Anda: ";
+        cout << "\nMasukkan pilihan Anda : ";
         cin >> pilihan;
 
         switch (pilihan) {
@@ -58,7 +67,11 @@ int main() {
                 playSuit();
                 break;
             case 4:
-                cout << "\nTerima kasih telah bermain!" << endl;
+                playCariKata();
+                break;
+            case 5:
+                system(CLEAR);
+                credit();
                 break;
             default:
                 cout << "\nPilihan tidak valid. Coba lagi." << endl;
@@ -66,7 +79,7 @@ int main() {
                 cin.get();
                 break;
         }
-    } while (pilihan != 4);
+    } while (pilihan != 5);
 
     return 0;
 }

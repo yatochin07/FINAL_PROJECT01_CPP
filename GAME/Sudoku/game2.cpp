@@ -5,12 +5,6 @@
 #include <limits>
 #include "game2.h"
 
-#ifdef _WIN32
-    #define CLEAR "CLS"
-#else
-    #define CLEAR "clear"
-#endif
-
 using namespace std;
 
 // Prototipe fungsi
@@ -20,9 +14,9 @@ bool selesaikanSudoku(vector<vector<int>>& grid);
 void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap);
 void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap);
 bool validasiInputAngka();
-void clearScreen();
 
 void playSudoku() {
+    system("cls");
     srand(time(0)); // Inisialisasi random seed
     vector<vector<int>> grid(9, vector<int>(9, 0));
     vector<vector<int>> gridTetap(9, vector<int>(9, 0));
@@ -115,31 +109,23 @@ bool validasiInputAngka() {
     return true;
 }
 
-// Fungsi untuk membersihkan layar
-void clearScreen() {
-    system(CLEAR);
-}
-
 // Fungsi utama untuk memainkan game Sudoku
 void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
     int baris, kolom, angka;
     while (true) {
-        clearScreen();
-        cout << "\nAturan permainan:"
-             << "\n1. Masukkan angka 1-9 pada grid kosong."
-             << "\n2. Anda tidak dapat mengubah angka tetap."
-             << "\n3. Angka tidak boleh sama dalam baris, kolom, atau kotak 3x3."
-             << "\n4. Ketikkan -1 pada baris untuk meminta solusi otomatis.\n";
+        cout << "\nAturan permainan:";
+        cout << "\n1. Masukkan angka 1-9 pada grid kosong.";
+        cout << "\n2. Anda tidak dapat mengubah angka tetap.";
+        cout << "\n3. Angka tidak boleh sama dalam baris, kolom, atau kotak 3x3.";
+        cout << "\n4. Ketikkan -1 pada baris untuk meminta solusi otomatis.";
 
-        cout << "\nGrid Sudoku saat ini:\n";
+        cout << "\n\nGrid Sudoku saat ini:\n";
         cetakGrid(grid);
 
         cout << "\nMasukkan baris (1-9) atau -1 untuk menyelesaikan otomatis: ";
         cin >> baris;
         if (!validasiInputAngka()) {
             cout << "Input tidak valid. Harap masukkan angka.\n";
-            cin.ignore();
-            cin.get();
             continue;
         }
 
@@ -157,15 +143,11 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
         cin >> kolom;
         if (!validasiInputAngka()) {
             cout << "Input tidak valid. Harap masukkan angka.\n";
-            cin.ignore();
-            cin.get();
             continue;
         }
 
         if (gridTetap[baris - 1][kolom - 1] != 0) {
-            cout << "Sel pada posisi tersebut adalah angka tetap dan tidak dapat diubah. Tekan Enter untuk melanjutkan...";
-            cin.ignore();
-            cin.get();
+            cout << "Sel pada posisi tersebut adalah angka tetap dan tidak dapat diubah.\n";
             continue;
         }
 
@@ -173,25 +155,28 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
         cin >> angka;
         if (!validasiInputAngka()) {
             cout << "Input tidak valid. Harap masukkan angka.\n";
-            cin.ignore();
-            cin.get();
             continue;
         }
 
         if (baris < 1 || baris > 9 || kolom < 1 || kolom > 9 || angka < 1 || angka > 9) {
-            cout << "Input tidak valid. Pastikan baris, kolom, dan angka berada dalam rentang 1-9.";
-            cin.ignore();
-            cin.get();
+            cout << "Input tidak valid. Pastikan baris, kolom, dan angka berada dalam rentang 1-9.\n";
             continue;
         }
 
         if (!langkahValid(grid, baris - 1, kolom - 1, angka)) {
-            cout << "Langkah tidak valid. Angka melanggar aturan Sudoku. Tekan Enter untuk melanjutkan...";
-            cin.ignore();
-            cin.get();
+            cout << "Langkah tidak valid. Angka melanggar aturan Sudoku.\n";
             continue;
         }
 
         grid[baris - 1][kolom - 1] = angka;
+
+        // Opsi untuk melanjutkan atau keluar
+        char pilihan;
+        cout << "\nApakah Anda ingin melanjutkan? (y/n): ";
+        cin >> pilihan;
+        if (pilihan == 'n' || pilihan == 'N') {
+            cout << "Terima kasih telah bermain!\n";
+            break;
+        }
     }
 }

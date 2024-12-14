@@ -59,6 +59,7 @@ string inputPilihanPlayer() {
 
 void playSuit() 
 {
+    system("cls");
     srand(static_cast<unsigned int>(time(0))); //inisialisasi angka acak
 
     int skorPlayer = 0;
@@ -93,7 +94,7 @@ void playSuit()
         cout << "\n\tSkor sementara : " << endl;
         cout << "\tPlayer " << skorPlayer << " - " << skorKomputer << " Komputer" << endl;
 
-        cout << "\n\tIngin Bermain Lagi? (y/t)\t: ";
+        cout << "\n\tIngin Bermain Lagi? (y/n)\t: ";
         cin >> mainLagi;
 
         if (mainLagi == 'y' || 'Y') {
