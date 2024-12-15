@@ -99,8 +99,9 @@ void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words
     }
 }
 
+// Fungsi untuk membersihkan layar dan hanya menghapus grid
 void clearScreen() {
-    // Membersihkan layar untuk sistem operasi Windows atau Unix
+    // Menampilkan layar kosong (membersihkan bagian grid)
     #ifdef _WIN32
         system("cls");
     #else
@@ -217,6 +218,12 @@ void playCariKata() {
 
             // Setelah input, refresh layar dan tampilkan status terbaru
             clearScreen();
+
+            // Menampilkan kembali judul dan instruksi
+            cout << "+-----------------------------------------+\t" << endl;
+            cout << "|    SELAMAT DATANG DI GAME CARI KATA     |\t" << endl;
+            cout << "+-----------------------------------------+\t" << endl << endl;
+            cout << "Temukan kata-kata yang tersembunyi dalam grid berikut : " << endl << endl;
 
             // Menampilkan grid setelah perubahan
             printGrid(grid);

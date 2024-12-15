@@ -3,7 +3,7 @@
 #include <ctime>
 #include <climits>
 #include <chrono>
-#include <conio.h>
+#include <unistd.h>  // Untuk system("clear")
 #include "game1.h"
 
 using namespace std;
@@ -60,7 +60,7 @@ int checkwin()
 // Fungsi untuk menggambar game board
 void board() 
 {
-    system("cls");
+    system("clear");  // Menggunakan "clear" untuk Linux
     cout << "\n\nGAME TIC-TAC-TOE\n\n";
     cout << "Player 1(X) - Player 2(O)" << endl << endl << endl;
 
@@ -166,7 +166,7 @@ void playTicTacToe()
 
     do 
     {
-        system("cls");
+        system("clear");  // Menggunakan "clear" untuk Linux
         int player = 1, i, choice;
         char mark;
 
@@ -234,7 +234,7 @@ void playTicTacToe()
 
     } 
     while (playAgain == 'Y' || playAgain == 'y');
-    system("cls");
+    system("clear");  // Menggunakan "clear" untuk Linux
 
     cout << "Terima kasih telah bermain!" << endl;
 }

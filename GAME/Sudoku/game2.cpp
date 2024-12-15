@@ -16,7 +16,7 @@ void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap)
 bool validasiInputAngka();
 
 void playSudoku() {
-    system("cls");
+    system("clear");
     srand(time(0)); // Inisialisasi random seed
     vector<vector<int>> grid(9, vector<int>(9, 0));
     vector<vector<int>> gridTetap(9, vector<int>(9, 0));
@@ -117,11 +117,12 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
         cout << "\n1. Masukkan angka 1-9 pada grid kosong.";
         cout << "\n2. Anda tidak dapat mengubah angka tetap.";
         cout << "\n3. Angka tidak boleh sama dalam baris, kolom, atau kotak 3x3.";
-        cout << "\n4. Ketikkan -1 pada baris untuk meminta solusi otomatis.";
+        cout << "\n4. Ketikkan -1 pada baris untuk keluar\n";
 
-        cout << "\n\nGrid Sudoku saat ini:\n";
+        cout << "\nGrid Sudoku saat ini:\n";
         cetakGrid(grid);
 
+        // Meminta input dalam satu baris
         cout << "\nMasukkan baris (1-9) atau -1 untuk menyelesaikan otomatis: ";
         cin >> baris;
         if (!validasiInputAngka()) {

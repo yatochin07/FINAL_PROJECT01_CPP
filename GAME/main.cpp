@@ -10,6 +10,7 @@
 #include "Suit/game3.h"
 #include "Cari-Kata/game4.h"
 #include "credit.h"
+#include "easteregg.h"
 
 #ifdef _WIN32
     #define CLEAR "CLS"
@@ -35,8 +36,11 @@ void playSudoku();
 void playCariKata();
 
 // credit
-void credit()
-;
+void credit();
+
+//easteregg
+void easterEgg();
+
 int main() {
     int pilihan;
     
@@ -49,7 +53,7 @@ int main() {
         cout << "+=====================================+\n";
         cout << "| 1. Tic-Tac-Toe                     |\n";
         cout << "| 2. Sudoku                          |\n";
-        cout << "| 3. Batu-Gunting-Kertas             |\n";
+        cout << "| 3. Suit                            |\n";
         cout << "| 4. Cari Kata                       |\n";
         cout << "| 5. Keluar                          |\n";
         cout << "+=====================================+\n";
@@ -72,6 +76,10 @@ int main() {
             case 5:
                 system(CLEAR);
                 credit();
+                break;
+            case 6:
+                system(CLEAR);
+                easterEgg();
                 break;
             default:
                 cout << "\nPilihan tidak valid. Coba lagi." << endl;
