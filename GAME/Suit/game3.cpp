@@ -59,7 +59,7 @@ string inputPilihanPlayer() {
 
 void playSuit() 
 {
-    system("clear");
+    system("cls");
     srand(static_cast<unsigned int>(time(0))); //inisialisasi angka acak
 
     int skorPlayer = 0;
@@ -74,7 +74,7 @@ void playSuit()
 
         //Validasi input
         if (pilihanPlayer == "invalid") {
-            system("clear");
+            system("cls");
             cout << "\nPilihan tidak valid, Silahkan coba lagi !!" << endl;
             cout << "\n------------------------------------------" << endl;
             continue;
@@ -98,7 +98,7 @@ void playSuit()
         cin >> mainLagi;
 
         if (mainLagi == 'y' || 'Y') {
-            system("clear");
+            system("cls");
         }
 
     } while (mainLagi == 'y' || mainLagi == 'Y');

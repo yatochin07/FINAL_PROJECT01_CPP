@@ -16,7 +16,7 @@ void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap)
 bool validasiInputAngka();
 
 void playSudoku() {
-    system("clear");
+    system("cls");
     srand(time(0)); // Inisialisasi random seed
     vector<vector<int>> grid(9, vector<int>(9, 0));
     vector<vector<int>> gridTetap(9, vector<int>(9, 0));
@@ -112,17 +112,22 @@ bool validasiInputAngka() {
 // Fungsi utama untuk memainkan game Sudoku
 void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
     int baris, kolom, angka;
+
     while (true) {
-        cout << "\nAturan permainan:";
-        cout << "\n1. Masukkan angka 1-9 pada grid kosong.";
-        cout << "\n2. Anda tidak dapat mengubah angka tetap.";
-        cout << "\n3. Angka tidak boleh sama dalam baris, kolom, atau kotak 3x3.";
-        cout << "\n4. Ketikkan -1 pada baris untuk keluar\n";
+        // Bersihkan layar
+        system("cls");
+
+        // Cetak aturan permainan dan grid Sudoku
+        cout << "Aturan permainan:" << endl;
+        cout << "1. Masukkan angka 1-9 pada grid kosong." << endl;
+        cout << "2. Anda tidak dapat mengubah angka tetap." << endl;
+        cout << "3. Angka tidak boleh sama dalam baris, kolom, atau kotak 3x3." << endl;
+        cout << "4. Ketikkan -1 pada baris untuk keluar." << endl;
 
         cout << "\nGrid Sudoku saat ini:\n";
         cetakGrid(grid);
 
-        // Meminta input dalam satu baris
+        // Meminta input
         cout << "\nMasukkan baris (1-9) atau -1 untuk menyelesaikan otomatis: ";
         cin >> baris;
         if (!validasiInputAngka()) {
@@ -170,14 +175,6 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
         }
 
         grid[baris - 1][kolom - 1] = angka;
-
-        // Opsi untuk melanjutkan atau keluar
-        char pilihan;
-        cout << "\nApakah Anda ingin melanjutkan? (y/n): ";
-        cin >> pilihan;
-        if (pilihan == 'n' || pilihan == 'N') {
-            cout << "Terima kasih telah bermain!\n";
-            break;
-        }
     }
 }
+

@@ -7,7 +7,7 @@ using namespace std;
 
 void showStartScreen() 
 {
-    system("clear");
+    system("cls");
     cout << "=======================================" << endl;
     cout << "||      WELCOME TO LOGICAL GAME      ||" << endl;
     cout << "||  University of Amikom Yogyakarta  ||" << endl;
