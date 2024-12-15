@@ -3,14 +3,14 @@ compile code bash : g++ main.cpp Tic-Tac-Toe/game1.cpp Sudoku/game2.cpp Suit/gam
 structure of code :
 
     (A) GAME
-      - main.cpp (include semua header.h) 
-      - start.cpp
-      - start.h
-      - credit.cpp
-      - credit.h
-      - easteregg.cpp
-      - easteregg.h
-      - games.exe (file eksekusi program) 
+        - main.cpp (include semua header.h) 
+        - start.cpp
+        - start.h
+        - credit.cpp
+        - credit.h
+        - easteregg.cpp
+        - easteregg.h
+        - games.exe (file eksekusi program) 
 
           (1) Tic-Tac-Toe
                 - game1.cpp
