@@ -1,13 +1,13 @@
 #include <iostream>
 #include <cstdlib>  
-#include <unistd.h>
+#include <conio.h>  // Header untuk _kbhit() dan _getch()
 #include "start.h"
 
 using namespace std;
 
 void showStartScreen() 
 {
-    system("cls");
+    system("cls");  // Menggunakan 'cls' untuk membersihkan layar di Windows
     cout << "=======================================" << endl;
     cout << "||      WELCOME TO LOGICAL GAME      ||" << endl;
     cout << "||  University of Amikom Yogyakarta  ||" << endl;
@@ -23,7 +23,7 @@ void showTextOnce()
 
 void startGame() 
 {
-    system("clear"); // Clear the console screen (di Linux, gunakan clear)
+    system("cls"); // Clear the console screen (di Windows, gunakan cls)
 }
 
 void starter() 
@@ -36,10 +36,12 @@ void starter()
     // Tunggu sampai pemain menekan Enter
     while (true) 
     {
-        // Mengganti getch() dengan cin.get(), yang akan menunggu input
-        if (cin.get() == '\n') { // '\n' adalah karakter untuk Enter
-            startGame();
-            break;
+        // Menggunakan _kbhit() dan _getch() untuk mendeteksi penekanan tombol Enter
+        if (_kbhit()) {
+            if (_getch() == '\r') { // '\r' adalah karakter untuk Enter di Windows
+                startGame();
+                break;
+            }
         }
     }
 }
