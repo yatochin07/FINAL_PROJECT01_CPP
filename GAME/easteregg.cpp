@@ -1,16 +1,18 @@
 #include <iostream>
 #include <cmath>
-#include <cstring>  
-#include <unistd.h> 
+#include <cstring>
+#include <windows.h>  // Header untuk Sleep() dan SetConsoleCursorPosition()
 #include "easteregg.h"
 
 using namespace std;
 
-// An implementation of gotoxy() function for smoother animation
-// without scrolling or clearing screen.
+// An implementation of gotoxy() function for smoother animation in Windows
 void gotoxy(int x, int y)
 {
-    cout << "\x1b[" << y << ";" << x << "H";
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
 void easterEgg()
@@ -21,16 +23,16 @@ void easterEgg()
     // A, B
     float A = 0, B = 0;
 
-    //phi, theta
+    // phi, theta
     float i, j;
     
-    //K1
+    // K1
     int k;
 
-    //z-buffer
+    // z-buffer
     float z[1760];
     char b[1760];
-    cout << "\x1b[2J";  // Clear screen
+    cout << "\x1b[2J";  // Clear screen (Note: This may work in some Windows terminals, or can be skipped)
 
     while (true)
     {
@@ -47,8 +49,8 @@ void easterEgg()
                 float e = sin(A); // sin(A)
                 float f = sin(j); // sin(theta)
                 float g = cos(A); // cos(A)
-                float h = d + 2;  // (R2 + R1cos(theta)) //R2 is taken as 2 here
-                float D = 1 / (c * h * e + f * g + 5); // 1/(z + K2) //K2 is taken as 5
+                float h = d + 2;  // (R2 + R1cos(theta)) // R2 is taken as 2 here
+                float D = 1 / (c * h * e + f * g + 5); // 1/(z + K2) // K2 is taken as 5
                 float l = cos(i); // cos(phi)
                 float m = cos(B); // cos(B)
                 float n = sin(B); // sin(B)
@@ -77,7 +79,10 @@ void easterEgg()
             }
         }
 
-        cout << "\x1b[H"; // Move cursor to top-left
+        // Move cursor to top-left
+        gotoxy(0, 0);
+        
+        // Print the frame
         for (k = 0; k < 1761; k++)
         {
             putchar(k % 80 ? b[k] : 10); // Print the frame
@@ -88,9 +93,6 @@ void easterEgg()
         B += 0.02;
 
         // Sleep for a short period to slow down the animation
-        usleep(10000); // Sleep for 10 milliseconds (usleep takes microseconds)
-        
-        gotoxy(0, 0); // Move cursor back to (0, 0) to avoid scrolling
+        Sleep(10); // Sleep for 10 milliseconds (Windows Sleep() takes milliseconds)
     }
-
 }
