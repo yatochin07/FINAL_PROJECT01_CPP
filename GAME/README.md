@@ -10,6 +10,7 @@ structure of code :
       - credit.h
       - easteregg.cpp
       - easteregg.h
+      - games.exe (file eksekusi program) 
 
           (1) Tic-Tac-Toe
                 - game1.cpp
