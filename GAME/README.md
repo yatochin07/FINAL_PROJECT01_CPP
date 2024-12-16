@@ -236,33 +236,7 @@ Skor sementara ditampilkan setelah setiap putaran.
 Pemain dapat memilih untuk bermain lagi atau tidak.
 
 
-7. Perbaikan yang Diperlukan
 
-Ada sedikit kekeliruan pada bagian pengecekan mainLagi:
-
-if (mainLagi == 'y' || 'Y') {
-    system("cls");
-}
-
-Kondisi ini tidak berfungsi sebagaimana mestinya karena 'Y' selalu dianggap benar (karena merupakan karakter yang tidak kosong). Seharusnya ditulis seperti ini:
-
-if (mainLagi == 'y' || mainLagi == 'Y') {
-    system("cls");
-}
-
-8. Ringkasan Proses
-
-Pemain memilih antara batu, kertas, atau gunting.
-
-Komputer memilih secara acak.
-
-Hasil perbandingan diproses untuk menentukan pemenang.
-
-Skor diperbarui dan ditampilkan.
-
-Pemain bisa memilih untuk bermain lagi atau keluar.
-
-Program akan mengumumkan pemenang berdasarkan skor akhir dan mengucapkan terima kasih kepada pemain.
 
 
 
