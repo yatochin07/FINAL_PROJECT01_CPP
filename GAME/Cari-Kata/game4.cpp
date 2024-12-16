@@ -9,7 +9,8 @@
 using namespace std;
 
 // Fungsi untuk mencetak grid
-void printGrid(const vector<string>& grid) {
+void printGrid(const vector<string>& grid) 
+{
     for (const string& row : grid) {
         for (char c : row) {
             cout << c << ' ';
@@ -19,7 +20,8 @@ void printGrid(const vector<string>& grid) {
 }
 
 // Fungsi untuk binary search pada daftar kata
-bool binarySearch(const vector<string>& words, const string& target) {
+bool binarySearch(const vector<string>& words, const string& target) 
+{
     int left = 0, right = words.size() - 1;
     while (left <= right) {
         int mid = left + (right - left) / 2;
@@ -34,13 +36,16 @@ bool binarySearch(const vector<string>& words, const string& target) {
 }
 
 // Fungsi untuk mengacak huruf dalam grid
-void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words) {
+void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words) 
+{
     srand(time(0));  // Seed untuk random
 
     // Menyisipkan kata-kata dalam grid secara acak
-    for (const string& word : words) {
+    for (const string& word : words) 
+    {
         bool placed = false;
-        while (!placed) {
+        while (!placed) 
+        {
             // Pilih posisi acak dan arah (horizontal/vertikal)
             int row = rand() % grid.size();
             int col = rand() % grid[row].size();
@@ -49,25 +54,36 @@ void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words
             bool canPlace = true;
 
             // Periksa apakah kata bisa ditempatkan sesuai arah
-            if (horizontal) {
+            if (horizontal) 
+            {
                 if (col + word.size() > grid[row].size()) {
                     canPlace = false;  // Kata tidak muat secara horizontal
-                } else {
+                } else 
+                {
                     // Periksa apakah posisi untuk kata kosong
-                    for (int i = 0; i < word.size(); i++) {
-                        if (grid[row][col + i] != ' ') {
+                    for (int i = 0; i < word.size(); i++) 
+                    {
+                        if (grid[row][col + i] != ' ') 
+                        {
                             canPlace = false;
                             break;
                         }
                     }
                 }
-            } else {
-                if (row + word.size() > grid.size()) {
-                    canPlace = false;  // Kata tidak muat secara vertikal
-                } else {
+            } 
+            else 
+            {
+                if (row + word.size() > grid.size()) 
+                {
+                    canPlace = false;  
+                } 
+                else 
+                {
                     // Periksa apakah posisi untuk kata kosong
-                    for (int i = 0; i < word.size(); i++) {
-                        if (grid[row + i][col] != ' ') {
+                    for (int i = 0; i < word.size(); i++) 
+                    {
+                        if (grid[row + i][col] != ' ') 
+                        {
                             canPlace = false;
                             break;
                         }
@@ -75,12 +91,16 @@ void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words
                 }
             }
 
-            // Tempatkan kata jika bisa
-            if (canPlace) {
-                for (int i = 0; i < word.size(); i++) {
+            // Tempatkan kata jika bisa (ada)
+            if (canPlace) 
+            {
+                for (int i = 0; i < word.size(); i++) 
+                {
                     if (horizontal) {
                         grid[row][col + i] = word[i];
-                    } else {
+                    } 
+                    else 
+                    {
                         grid[row + i][col] = word[i];
                     }
                 }
@@ -90,8 +110,10 @@ void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words
     }
 
     // Mengisi sisa grid dengan huruf acak
-    for (auto& row : grid) {
-        for (auto& cell : row) {
+    for (auto& row : grid) 
+    {
+        for (auto& cell : row) 
+        {
             if (cell == ' ') {
                 cell = 'A' + rand() % 26;  // Huruf acak dari A-Z
             }
@@ -100,8 +122,9 @@ void fillGridWithRandomLetters(vector<string>& grid, const vector<string>& words
 }
 
 // Fungsi untuk membersihkan layar dan hanya menghapus grid
-void clearScreen() {
-    // Menampilkan layar kosong (membersihkan bagian grid)
+void clearScreen() 
+{
+    
     #ifdef _WIN32
         system("cls");
     #else
@@ -109,41 +132,54 @@ void clearScreen() {
     #endif
 }
 
-// Fungsi untuk mengganti huruf pada grid setelah kata ditemukan
-void removeWordFromGrid(vector<string>& grid, const string& word) {
-    for (int row = 0; row < grid.size(); ++row) {
-        for (int col = 0; col < grid[row].size(); ++col) {
+// Fungsi untuk menghapus huruf pada grid setelah kata ditemukan
+void removeWordFromGrid(vector<string>& grid, const string& word) 
+{
+    for (int row = 0; row < grid.size(); ++row) 
+    {
+        for (int col = 0; col < grid[row].size(); ++col) 
+        {
             // Mencari kata yang sesuai
-            if (grid[row][col] == word[0]) {
+            if (grid[row][col] == word[0]) 
+            {
                 // Cek apakah kata berada dalam arah horizontal
-                if (col + word.size() <= grid[row].size()) {
+                if (col + word.size() <= grid[row].size()) 
+                {
                     bool canRemove = true;
-                    for (int i = 0; i < word.size(); ++i) {
-                        if (grid[row][col + i] != word[i]) {
+                    for (int i = 0; i < word.size(); ++i) 
+                    {
+                        if (grid[row][col + i] != word[i]) 
+                        {
                             canRemove = false;
                             break;
                         }
                     }
-                    if (canRemove) {
-                        // Menghapus kata dari grid
-                        for (int i = 0; i < word.size(); ++i) {
+                    if (canRemove) 
+                    {
+                        for (int i = 0; i < word.size(); ++i) 
+                        {
                             grid[row][col + i] = ' ';
                         }
                         return;
                     }
                 }
                 // Cek apakah kata berada dalam arah vertikal
-                if (row + word.size() <= grid.size()) {
+                if (row + word.size() <= grid.size()) 
+                {
                     bool canRemove = true;
-                    for (int i = 0; i < word.size(); ++i) {
-                        if (grid[row + i][col] != word[i]) {
+                    for (int i = 0; i < word.size(); ++i) 
+                    {
+                        if (grid[row + i][col] != word[i]) 
+                        {
                             canRemove = false;
                             break;
                         }
                     }
-                    if (canRemove) {
+                    if (canRemove) 
+                    {
                         // Menghapus kata dari grid
-                        for (int i = 0; i < word.size(); ++i) {
+                        for (int i = 0; i < word.size(); ++i) 
+                        {
                             grid[row + i][col] = ' ';
                         }
                         return;
@@ -154,22 +190,33 @@ void removeWordFromGrid(vector<string>& grid, const string& word) {
     }
 }
 
-void playCariKata() {
+void title()
+{
+    cout << "+-----------------------------------------+\t" << endl;
+    cout << "|    SELAMAT DATANG DI GAME CARI KATA     |\t" << endl;
+    cout << "+-----------------------------------------+\t" << endl << endl;
+    cout << "Temukan kata-kata yang tersembunyi dalam grid berikut : " << endl << endl;
+}
+void playCariKata() 
+{
     char playAgain;
-    do {
-    
-        // Grid 15x15 dengan huruf acak dan beberapa kata tersembunyi
+
+    do 
+    {
+        // Grid 15x15 dengan huruf acak dan beberapa kata yang harus ditemukan
         vector<string> grid(15, string(15, ' '));  // Membuat grid 15x15 dengan spasi kosong
 
-        // Daftar kata yang harus ditemukan (harus urut untuk binary search)
-        vector<string> words = {
-            "ACEH", "AMBON", "BALI", "BANDUNG", "JAKARTA", "KUPANG", "MAKASSAR", "MANADO", "MEDAN", "PADANG", "PALANGKA", "SOLO", "SURABAYA", "YOGYAKARTA"
+        // Daftar kata yang harus ditemukan (binary search)
+        vector<string> words = 
+        {
+            "ACEH", "AMBON", "BALI", "BANDUNG", "JAKARTA", "KUPANG", "MAKASSAR", 
+            "MANADO", "MEDAN", "PADANG", "PALANGKA", "SOLO", "SURABAYA", "YOGYAKARTA"
         };
 
         // Salin daftar kata untuk digunakan nanti
         vector<string> remainingWords = words;
 
-        // Mengurutkan kata-kata untuk binary search
+        // Mengurutkan kata-kata untuk binary search (kata yang telah ditemukan)
         sort(words.begin(), words.end());
 
         int chances = 5; // Kesempatan menjawab
@@ -180,26 +227,25 @@ void playCariKata() {
 
         // Menampilkan tampilan awal permainan
         clearScreen();
-        cout << "+-----------------------------------------+\t" << endl;
-        cout << "|    SELAMAT DATANG DI GAME CARI KATA     |\t" << endl;
-        cout << "+-----------------------------------------+\t" << endl << endl;
-        cout << "Temukan kata-kata yang tersembunyi dalam grid berikut : " << endl << endl;
+        title();
 
-        // Menampilkan grid sekali di awal permainan
+        // Menampilkan grid 
         printGrid(grid);
 
         vector<string> foundWords;  // Daftar kata yang telah ditemukan
 
-        while (chances > 0 && !words.empty()) {
+        while (chances > 0 && !words.empty()) 
+        {
             string guess;
             cout << "\nMasukkan kata yang Anda temukan : ";
             cin >> guess;
 
-            // Konversi ke huruf besar agar case-insensitive
+            // Konversi ke huruf besar 
             transform(guess.begin(), guess.end(), guess.begin(), ::toupper);
 
             // Cek apakah kata ada di daftar menggunakan binary search
-            if (binarySearch(words, guess) && find(foundWords.begin(), foundWords.end(), guess) == foundWords.end()) {
+            if (binarySearch(words, guess) && find(foundWords.begin(), foundWords.end(), guess) == foundWords.end()) 
+            {
                 cout << "Benar! Anda menemukan kata = " << guess << endl;
                 score += 10;
 
@@ -211,7 +257,9 @@ void playCariKata() {
 
                 // Menghapus kata dari grid
                 removeWordFromGrid(grid, guess);
-            } else {
+            } 
+            else 
+            {
                 cout << "Salah! Kata tidak ditemukan." << endl;
                 chances--;
             }
@@ -220,10 +268,7 @@ void playCariKata() {
             clearScreen();
 
             // Menampilkan kembali judul dan instruksi
-            cout << "+-----------------------------------------+\t" << endl;
-            cout << "|    SELAMAT DATANG DI GAME CARI KATA     |\t" << endl;
-            cout << "+-----------------------------------------+\t" << endl << endl;
-            cout << "Temukan kata-kata yang tersembunyi dalam grid berikut : " << endl << endl;
+            title();
 
             // Menampilkan grid setelah perubahan
             printGrid(grid);
@@ -234,10 +279,13 @@ void playCariKata() {
         }
 
         // Jika semua kata ditemukan atau kesempatan habis
-        if (words.empty()) {
+        if (words.empty()) 
+        {
             cout << endl;
             cout << "Selamat! Anda telah menemukan semua kata!" << endl;
-        } else if (chances == 0) {
+        } 
+        else if (chances == 0) 
+        {
             cout << "Kesempatan Anda habis. Permainan selesai." << endl;
         }
 
@@ -254,25 +302,29 @@ void playCariKata() {
         cout << endl;
 
         // Jika pemain kalah, tampilkan kata yang belum ditemukan
-        if (chances == 0) {
+        if (chances == 0) 
+        {
             cout << endl;
             cout << "Kata-kata yang belum ditemukan : \n";
-            for (const string& word : words) {
+            for (const string& word : words) 
+            {
                 cout << word << " ";
             }
             cout << endl;
         }
 
+        cout << endl;
         cout << "Terima kasih telah bermain!" << endl;
 
         // Tanya apakah pemain ingin bermain lagi
         cout << "\nApakah Anda ingin bermain lagi? (y/n) : ";
         cin >> playAgain;
 
-        // Memastikan jika pemain memilih 'n' atau 'N', permainan akan kembali ke menu utama
-        if (playAgain == 'n' || playAgain == 'N') {
-            break;  // Menghentikan permainan dan kembali ke menu utama
+        if (playAgain == 'n' || playAgain == 'N') 
+        {
+            break;  
         }
 
-    } while (playAgain == 'Y' || playAgain == 'y');
+    } 
+    while (playAgain == 'Y' || playAgain == 'y');
 }

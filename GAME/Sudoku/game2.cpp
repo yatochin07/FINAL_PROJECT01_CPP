@@ -15,7 +15,8 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap);
 void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap);
 bool validasiInputAngka();
 
-void playSudoku() {
+void playSudoku() 
+{
     system("cls");
     srand(time(0)); // Inisialisasi random seed
     vector<vector<int>> grid(9, vector<int>(9, 0));
@@ -28,22 +29,30 @@ void playSudoku() {
 }
 
 // Fungsi untuk mencetak grid Sudoku dengan kotak
-void cetakGrid(const vector<vector<int>>& grid) {
+void cetakGrid(const vector<vector<int>>& grid) 
+{
     cout << "  +===================================+\n";
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 9; i++) 
+    {
         cout << "  | ";
-        for (int j = 0; j < 9; j++) {
+        for (int j = 0; j < 9; j++) 
+        {
             cout << (grid[i][j] == 0 ? ' ' : char(grid[i][j] + '0'));
-            if ((j + 1) % 3 == 0) {
+            if ((j + 1) % 3 == 0) 
+            {
                 cout << " | ";
-            } else {
+            } 
+            else 
+            {
                 cout << " | ";
             }
         }
         cout << "\n";
-        if ((i + 1) % 3 == 0 && i != 8) {
+        if ((i + 1) % 3 == 0 && i != 8) 
+        {
             cout << "  |===========|===========|===========|\n";
-        } else if (i != 8) {
+        } else if (i != 8) 
+        {
             cout << "  |-----------|-----------|-----------|\n";
         }
     }
@@ -51,10 +60,13 @@ void cetakGrid(const vector<vector<int>>& grid) {
 }
 
 // Fungsi untuk memeriksa apakah langkah valid
-bool langkahValid(const vector<vector<int>>& grid, int baris, int kolom, int angka) {
-    for (int x = 0; x < 9; x++) {
+bool langkahValid(const vector<vector<int>>& grid, int baris, int kolom, int angka) 
+{
+    for (int x = 0; x < 9; x++) 
+    {
         if (grid[baris][x] == angka || grid[x][kolom] == angka ||
-            grid[3 * (baris / 3) + x / 3][3 * (kolom / 3) + x % 3] == angka) {
+            grid[3 * (baris / 3) + x / 3][3 * (kolom / 3) + x % 3] == angka) 
+            {
             return false;
         }
     }
@@ -62,15 +74,21 @@ bool langkahValid(const vector<vector<int>>& grid, int baris, int kolom, int ang
 }
 
 // Fungsi untuk menyelesaikan grid Sudoku menggunakan backtracking
-bool selesaikanSudoku(vector<vector<int>>& grid) {
-    for (int baris = 0; baris < 9; baris++) {
-        for (int kolom = 0; kolom < 9; kolom++) {
+bool selesaikanSudoku(vector<vector<int>>& grid) 
+{
+    for (int baris = 0; baris < 9; baris++) 
+    {
+        for (int kolom = 0; kolom < 9; kolom++) 
+        {
             if (grid[baris][kolom] == 0) {
-                for (int angka = 1; angka <= 9; angka++) {
-                    if (langkahValid(grid, baris, kolom, angka)) {
+                for (int angka = 1; angka <= 9; angka++) 
+                {
+                    if (langkahValid(grid, baris, kolom, angka)) 
+                    {
                         grid[baris][kolom] = angka;
 
-                        if (selesaikanSudoku(grid)) {
+                        if (selesaikanSudoku(grid)) 
+                        {
                             return true;
                         }
 
@@ -85,12 +103,16 @@ bool selesaikanSudoku(vector<vector<int>>& grid) {
 }
 
 // Fungsi untuk mengisi grid secara acak
-void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap) {
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
+void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap) 
+{
+    for (int i = 0; i < 9; i++) 
+    {
+        for (int j = 0; j < 9; j++) 
+        {
             if (rand() % 4 == 0) { // 25% kemungkinan untuk mengisi angka awal
                 int angka = rand() % 9 + 1;
-                if (langkahValid(grid, i, j, angka)) {
+                if (langkahValid(grid, i, j, angka)) 
+                {
                     grid[i][j] = angka;
                     gridTetap[i][j] = angka; // Simpan angka tetap
                 }
@@ -100,8 +122,10 @@ void inisialisasiGrid(vector<vector<int>>& grid, vector<vector<int>>& gridTetap)
 }
 
 // Fungsi untuk memvalidasi input angka
-bool validasiInputAngka() {
-    if (cin.fail()) {
+bool validasiInputAngka() 
+{
+    if (cin.fail()) 
+    {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return false;
@@ -110,10 +134,12 @@ bool validasiInputAngka() {
 }
 
 // Fungsi utama untuk memainkan game Sudoku
-void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
+void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) 
+{
     int baris, kolom, angka;
 
-    while (true) {
+    while (true) 
+    {
         // Bersihkan layar
         system("cls");
 
@@ -130,16 +156,21 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
         // Meminta input
         cout << "\nMasukkan baris (1-9) atau -1 untuk menyelesaikan otomatis: ";
         cin >> baris;
-        if (!validasiInputAngka()) {
+        if (!validasiInputAngka()) 
+        {
             cout << "Input tidak valid. Harap masukkan angka.\n";
             continue;
         }
 
-        if (baris == -1) {
-            if (selesaikanSudoku(grid)) {
+        if (baris == -1) 
+        {
+            if (selesaikanSudoku(grid)) 
+            {
                 cout << "\nGrid Sudoku yang telah diselesaikan:\n";
                 cetakGrid(grid);
-            } else {
+            }
+            else 
+            {
                 cout << "\nTidak ada solusi untuk grid ini.";
             }
             break;
@@ -147,29 +178,34 @@ void mainGame(vector<vector<int>>& grid, const vector<vector<int>>& gridTetap) {
 
         cout << "Masukkan kolom (1-9): ";
         cin >> kolom;
-        if (!validasiInputAngka()) {
+        if (!validasiInputAngka()) 
+        {
             cout << "Input tidak valid. Harap masukkan angka.\n";
             continue;
         }
 
-        if (gridTetap[baris - 1][kolom - 1] != 0) {
+        if (gridTetap[baris - 1][kolom - 1] != 0) 
+        {
             cout << "Sel pada posisi tersebut adalah angka tetap dan tidak dapat diubah.\n";
             continue;
         }
 
         cout << "Masukkan angka (1-9): ";
         cin >> angka;
-        if (!validasiInputAngka()) {
+        if (!validasiInputAngka()) 
+        {
             cout << "Input tidak valid. Harap masukkan angka.\n";
             continue;
         }
 
-        if (baris < 1 || baris > 9 || kolom < 1 || kolom > 9 || angka < 1 || angka > 9) {
+        if (baris < 1 || baris > 9 || kolom < 1 || kolom > 9 || angka < 1 || angka > 9) 
+        {
             cout << "Input tidak valid. Pastikan baris, kolom, dan angka berada dalam rentang 1-9.\n";
             continue;
         }
 
-        if (!langkahValid(grid, baris - 1, kolom - 1, angka)) {
+        if (!langkahValid(grid, baris - 1, kolom - 1, angka)) 
+        {
             cout << "Langkah tidak valid. Angka melanggar aturan Sudoku.\n";
             continue;
         }

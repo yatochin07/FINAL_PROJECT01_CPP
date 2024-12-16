@@ -46,7 +46,8 @@ int main() {
     
     starter();
     
-    do {
+    do 
+    {
         system(CLEAR);
         cout << "\n+=====================================+\n";
         cout << "|          PILIH GAME ANDA           |\n";
@@ -60,7 +61,8 @@ int main() {
         cout << "\nMasukkan pilihan Anda : ";
         cin >> pilihan;
 
-        switch (pilihan) {
+        switch (pilihan) 
+        {
             case 1:
                 playTicTacToe();
                 break;
@@ -87,7 +89,9 @@ int main() {
                 cin.get();
                 break;
         }
-    } while (pilihan != 5);
+    } 
+    
+    while (pilihan != 5);
 
     return 0;
 }

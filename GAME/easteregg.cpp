@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
-#include <windows.h>  // Header untuk Sleep() dan SetConsoleCursorPosition()
+#include <windows.h>  
 #include "easteregg.h"
 
 using namespace std;
