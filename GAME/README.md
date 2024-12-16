@@ -140,6 +140,11 @@ Ringkasan Proses
 
 
 
+
+
+
+
+
 B. GAME Suit :
 
    Berikut adalah penjelasan alur algoritma dari program tersebut:
