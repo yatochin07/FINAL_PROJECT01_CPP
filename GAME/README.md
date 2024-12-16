@@ -140,4 +140,129 @@ Ringkasan Proses
 
 
 
+B. GAME Suit :
+
+   Berikut adalah penjelasan alur algoritma dari program tersebut:
+
+1. Fungsi inputPilihanKomputer
+
+Fungsi ini mengembalikan pilihan komputer secara acak. Pilihan komputer berupa "batu", "kertas", atau "gunting", yang dipilih dengan menggunakan angka acak dari rand() % 3. Nilai acak ini menghasilkan angka 0, 1, atau 2, yang masing-masing mewakili pilihan tersebut:
+
+0 → "batu"
+
+1 → "kertas"
+
+2 → "gunting"
+
+
+
+2. Fungsi pemenang
+
+Fungsi ini menentukan pemenang berdasarkan aturan permainan:
+
+Jika pilihan pemain dan komputer sama, hasilnya adalah seru (draw).
+
+Jika pemain memilih batu dan komputer memilih gunting, pemain menang, dan seterusnya.
+
+
+Fungsi ini mengembalikan hasil berupa string yang bisa berisi "Seri", "Player Menang", atau "Komputer Menang".
+
+
+3. Fungsi pilihan
+
+Fungsi ini menampilkan menu pilihan untuk pemain yang ingin memilih antara batu, kertas, atau gunting. Menu ini ditampilkan dengan menggunakan angka 1, 2, atau 3:
+
+1 → Kertas
+
+2 → Batu
+
+3 → Gunting
+
+
+
+4. Fungsi inputPilihanPlayer
+
+Fungsi ini meminta pemain untuk memilih salah satu dari tiga pilihan (kertas, batu, gunting) menggunakan angka 1, 2, atau 3.
+
+Fungsi akan mengembalikan string yang sesuai dengan pilihan pemain ("kertas", "batu", "gunting"), atau jika input tidak valid (angka selain 1, 2, atau 3), maka akan mengembalikan "invalid".
+
+
+5. Fungsi playSuit
+
+Ini adalah fungsi utama yang menjalankan permainan.
+
+Dimulai dengan menginisialisasi skor untuk pemain dan komputer ke 0.
+
+Pemain diminta untuk memilih pilihan (kertas, batu, atau gunting) dengan memanggil fungsi inputPilihanPlayer.
+
+Komputer memilih secara acak menggunakan fungsi inputPilihanKomputer.
+
+Hasil perbandingan antara pilihan pemain dan komputer dihitung menggunakan fungsi pemenang. Skor dihitung berdasarkan hasil ini:
+
+Jika pemain menang, skor pemain bertambah.
+
+Jika komputer menang, skor komputer bertambah.
+
+
+Program menampilkan skor sementara dan menanyakan apakah pemain ingin bermain lagi (mainLagi). Jika pemain memilih y atau Y, permainan akan diulang.
+
+Setelah permainan selesai (pemain memilih tidak ingin bermain lagi), program menampilkan skor akhir dan menentukan siapa yang menang berdasarkan skor total:
+
+Jika skor komputer lebih tinggi, maka "Komputer Menang".
+
+Jika skor pemain lebih tinggi, maka "Player Menang".
+
+Jika skor sama, maka hasilnya seri.
+
+
+Terakhir, program mengucapkan terima kasih kepada pemain yang telah bermain.
+
+
+6. Alur Permainan
+
+Pemain memilih pilihan (1 untuk kertas, 2 untuk batu, 3 untuk gunting).
+
+Komputer memilih pilihan secara acak.
+
+Hasil ditentukan berdasarkan aturan permainan batu mengalahkan gunting, gunting mengalahkan kertas, dan kertas mengalahkan batu.
+
+Skor sementara ditampilkan setelah setiap putaran.
+
+Pemain dapat memilih untuk bermain lagi atau tidak.
+
+
+7. Perbaikan yang Diperlukan
+
+Ada sedikit kekeliruan pada bagian pengecekan mainLagi:
+
+if (mainLagi == 'y' || 'Y') {
+    system("cls");
+}
+
+Kondisi ini tidak berfungsi sebagaimana mestinya karena 'Y' selalu dianggap benar (karena merupakan karakter yang tidak kosong). Seharusnya ditulis seperti ini:
+
+if (mainLagi == 'y' || mainLagi == 'Y') {
+    system("cls");
+}
+
+8. Ringkasan Proses
+
+Pemain memilih antara batu, kertas, atau gunting.
+
+Komputer memilih secara acak.
+
+Hasil perbandingan diproses untuk menentukan pemenang.
+
+Skor diperbarui dan ditampilkan.
+
+Pemain bisa memilih untuk bermain lagi atau keluar.
+
+Program akan mengumumkan pemenang berdasarkan skor akhir dan mengucapkan terima kasih kepada pemain.
+
+
+
+
+
+
+
 
