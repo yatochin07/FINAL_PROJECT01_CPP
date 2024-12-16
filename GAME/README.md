@@ -239,6 +239,99 @@ Pemain dapat memilih untuk bermain lagi atau tidak.
 
 
 
+C. GAME Sudoku :
+
+   Berikut adalah penjelasan dari bagian-bagian program dan alurnya:
+
+1. Fungsi cetakGrid
+
+Fungsi ini bertugas untuk menampilkan grid Sudoku dengan format yang jelas dan terstruktur, termasuk pemisah antar blok 3x3. Fungsi ini akan menampilkan grid dengan angka yang ada, dan jika posisi kosong (nilai 0), maka akan ditampilkan sebagai spasi.
+
+Menampilkan angka dengan pemisahan antar kotak 3x3.
+
+Format kotak yang jelas dengan tanda +, |, dan - untuk batas grid.
+
+
+2. Fungsi langkahValid
+
+Fungsi ini memeriksa apakah langkah yang diambil pemain valid, yaitu apakah angka yang dimasukkan memenuhi aturan Sudoku:
+
+Tidak ada angka yang sama dalam baris yang sama.
+
+Tidak ada angka yang sama dalam kolom yang sama.
+
+Tidak ada angka yang sama dalam kotak 3x3 yang sama.
+
+
+Fungsi ini melakukan pengecekan untuk setiap kolom, baris, dan kotak 3x3.
+
+3. Fungsi selesaikanSudoku
+
+Fungsi ini adalah implementasi algoritma backtracking untuk menyelesaikan Sudoku. Algoritma ini mencoba mengisi angka secara rekursif dan kembali jika ditemukan kesalahan.
+
+Fungsi ini mencari posisi kosong (bernilai 0) pada grid.
+
+Untuk setiap posisi kosong, mencoba angka dari 1 hingga 9.
+
+Jika angka valid, ia mengisi posisi tersebut dan melanjutkan pencarian.
+
+Jika tidak ada angka yang valid, fungsi ini melakukan backtracking dengan menghapus angka yang telah dimasukkan dan mencoba posisi berikutnya.
+
+Fungsi ini berfungsi sebagai penyelesaian otomatis jika pemain ingin meminta komputer menyelesaikan grid.
+
+
+4. Fungsi inisialisasiGrid
+
+Fungsi ini menginisialisasi grid dengan angka acak di beberapa posisi. Setiap angka di grid yang dipilih tetap akan disimpan di gridTetap agar pemain tidak dapat mengubah angka-angka tersebut selama permainan.
+
+Angka dimasukkan dengan probabilitas 25% (1 dari 4), dan hanya angka yang valid yang akan dimasukkan.
+
+Angka-angka yang dimasukkan disalin ke dalam gridTetap agar pemain tidak bisa mengubahnya.
+
+
+5. Fungsi validasiInputAngka
+
+Fungsi ini memvalidasi input angka untuk memastikan bahwa input yang diberikan pemain adalah angka yang valid. Jika input salah (misalnya, memasukkan huruf atau karakter lain), fungsi ini akan membersihkan input dan mengembalikan false.
+
+6. Fungsi mainGame
+
+Fungsi ini adalah inti dari permainan Sudoku. Di sini, pemain akan bermain dengan mengisi grid dan memeriksa apakah langkah yang diambil valid.
+
+Pemain diminta untuk mengisi baris, kolom, dan angka.
+
+Pemain dapat mengetik -1 pada baris untuk meminta komputer menyelesaikan grid secara otomatis menggunakan algoritma backtracking.
+
+Program akan memastikan bahwa pemain hanya bisa mengubah angka yang tidak tetap (angka yang bukan bagian dari gridTetap).
+
+Jika langkah yang dimasukkan tidak valid, program akan meminta pemain untuk mencoba lagi.
+
+Setelah pemain selesai, permainan berakhir.
+
+
+7. Fungsi playSudoku
+
+Fungsi ini adalah fungsi utama untuk memulai permainan. Di sini, grid diinisialisasi, dan fungsi permainan utama (mainGame) dipanggil untuk memulai sesi permainan. Selain itu, fungsi ini juga mengatur inisialisasi grid acak dan mencetak pesan selamat datang.
+
+Proses Permainan
+
+1. Inisialisasi Grid: Beberapa angka awal diisi secara acak pada grid, dan angka yang tetap disalin ke dalam gridTetap agar tidak bisa diubah oleh pemain.
+
+
+2. Menampilkan Grid: Program menampilkan grid dengan format yang jelas.
+
+
+3. Meminta Input Pemain: Pemain diminta untuk memilih baris, kolom, dan angka (dalam rentang 1-9).
+
+
+4. Validasi Langkah: Langkah pemain diverifikasi berdasarkan aturan Sudoku.
+
+
+5. Penyelesaian Otomatis: Pemain dapat memilih untuk membiarkan komputer menyelesaikan Sudoku secara otomatis dengan mengetik -1.
+
+
+6. Perulangan: Proses ini berlanjut hingga permainan selesai.
+
+
 
 
 
