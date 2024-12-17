@@ -49,15 +49,15 @@ int main() {
     do 
     {
         system(CLEAR);
-        cout << "\n+=====================================+\n";
-        cout << "|          PILIH GAME ANDA           |\n";
-        cout << "+=====================================+\n";
-        cout << "| 1. Tic-Tac-Toe                     |\n";
-        cout << "| 2. Sudoku                          |\n";
-        cout << "| 3. Suit                            |\n";
-        cout << "| 4. Cari Kata                       |\n";
-        cout << "| 5. Keluar                          |\n";
-        cout << "+=====================================+\n";
+        cout << "\n=======================================\n";
+        cout << "||          PILIH GAME ANDA          ||\n";
+        cout << "=======================================\n";
+        cout << "|| 1. Tic-Tac-Toe                    ||\n";
+        cout << "|| 2. Sudoku                         ||\n";
+        cout << "|| 3. Suit                           ||\n";
+        cout << "|| 4. Cari Kata                      ||\n";
+        cout << "|| 5. Keluar                         ||\n";
+        cout << "=======================================\n";
         cout << "\nMasukkan pilihan Anda : ";
         cin >> pilihan;
 
