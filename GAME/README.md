@@ -260,6 +260,96 @@ removeWordFromGrid: Menghapus kata dari grid jika pemain menemukannya.
 clearScreen: Membersihkan layar untuk tampilan grid yang lebih rapi.
 playCariKata: Fungsi utama yang menjalankan seluruh alur permainan, termasuk tampilan, logika permainan, dan interaksi pemain.
 
+fungsi easteregg :
+
+
+Algoritma program ini menggambarkan animasi visual 3D berbentuk objek rotasi menggunakan karakter ASCII. Berikut adalah alur kerja dan penjelasan langkah-langkah dari program ini:
+
+1. Deklarasi Variabel:
+
+Variabel A, B digunakan untuk sudut rotasi objek.
+
+Variabel i, j digunakan untuk perhitungan sudut (phi dan theta) untuk objek 3D.
+
+Variabel k digunakan untuk perulangan dalam pencetakan karakter.
+
+Array z adalah buffer untuk menyimpan kedalaman (depth) setiap titik, untuk mendukung rendering objek 3D.
+
+Array b digunakan untuk menyimpan karakter ASCII yang akan diprint pada posisi tertentu.
+
+
+
+2. Fungsi gotoxy: Fungsi ini menggerakkan posisi kursor ke koordinat tertentu pada layar (x, y) di konsol Windows, untuk membuat animasi lebih mulus.
+
+
+3. Fungsi easterEgg: Ini adalah bagian utama dari program yang menghasilkan animasi ASCII 3D:
+
+Pembersihan layar: Menggunakan kode \x1b[2J untuk membersihkan layar (meskipun ini tidak selalu berfungsi di semua terminal Windows).
+
+Perulangan Utama:
+
+Program memasuki perulangan tak terhingga (while (true)) untuk terus memperbarui dan menampilkan animasi.
+
+Di dalam perulangan utama, ada dua perulangan for:
+
+Perulangan j (untuk sudut theta, dengan kenaikan 0.07).
+
+Perulangan i (untuk sudut phi, dengan kenaikan 0.02).
+
+
+Perhitungan Posisi Titik 3D:
+
+Posisi titik 3D dihitung dengan menggunakan rumus trigonometri untuk menentukan posisi objek pada layar 2D berdasarkan rotasi dan kedalaman. Rumus-rumus trigonometri yang digunakan di sini melibatkan sin() dan cos() untuk perhitungan sudut.
+
+
+Perhitungan Kedalaman (D): Kedalaman titik dihitung untuk membuat efek perspektif. Titik-titik yang lebih dekat ke layar (dengan kedalaman lebih kecil) akan muncul lebih terang.
+
+Luminance: Variabel N dihitung untuk menentukan seberapa terang atau gelapnya titik berdasarkan pencahayaan (luminance). Luminance ini akan dipetakan ke karakter ASCII, dengan karakter yang lebih terang digunakan untuk titik yang lebih terang.
+
+Penyimpanan di Buffer:
+
+Posisi titik pada layar dihitung sebagai x dan y dengan mempertimbangkan kedalaman.
+
+Jika titik berada dalam area layar yang valid (x dan y berada dalam rentang tertentu), maka karakter ASCII yang sesuai dipilih dan disimpan dalam buffer b.
+
+Kedalaman setiap titik disimpan dalam array z untuk mencegah titik yang lebih dekat menutupi titik yang lebih jauh.
+
+
+
+
+
+4. Mencetak Frame:
+
+Setelah seluruh titik dihitung, kursor dipindahkan kembali ke posisi (0, 0) dengan gotoxy.
+
+Setiap karakter dari buffer b kemudian diprint satu per satu ke layar untuk membentuk gambar 3D dalam format ASCII.
+
+Karakter putchar(k % 80 ? b[k] : 10) digunakan untuk mencetak karakter ke layar, di mana setiap baris terdiri dari 80 karakter (untuk membentuk bentuk kotak).
+
+
+
+5. Memperbarui Sudut Rotasi:
+
+Variabel A dan B diperbarui pada setiap iterasi untuk merotasi objek 3D sedikit demi sedikit, menciptakan efek rotasi yang halus.
+
+
+
+6. Penundaan Animasi:
+
+Fungsi Sleep(10) digunakan untuk memberi penundaan 10 milidetik di antara setiap frame, memperlambat kecepatan animasi sehingga terlihat lebih mulus.
+
+
+
+7. Perulangan Tak Terhingga:
+
+Seluruh proses diulang terus menerus (perulangan tak terbatas), menciptakan animasi berkelanjutan sampai program dihentikan.
+
+
+
+
+Secara keseluruhan, program ini membuat animasi objek 3D berputar yang digambarkan menggunakan karakter-karakter ASCII di layar terminal.
+
+
 
 
 
